@@ -1,0 +1,30 @@
+spin_manifest_version = "1"
+authors = ["teknicus"]
+description = "A Spin template to use the OpenAI Chat API with TypeScript"
+name = "openai-chat-ts"
+trigger = { type = "http", base = "/" }
+version = "0.1.0"
+
+# Use a variable to hold the OpenAI API Key
+[variables]
+openai_key = { required = true }
+
+[[component]]
+id = "openai-chat-ts"
+source = "target/openai-chat-ts.wasm"
+exclude_files = ["**/node_modules"]
+
+# Hosts for outbound requests muct be explicitly allowed and specified
+allowed_http_hosts = ["api.openai.com"] 
+
+# Specify the endpoint
+[component.trigger]
+route = "/question"
+
+
+[component.build]
+command = "npm run build"
+
+# Specify the OpenAI key as a config 
+[component.config]
+openai_key = "{{ openai_key }}"
