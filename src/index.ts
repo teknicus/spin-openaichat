@@ -1,8 +1,7 @@
 /*
 Code Overview
 
-Refer Readme: <Readme link>
-
+Refer Readme: https://github.com/teknicus/spin-openaichat/blob/main/README.md
 
 */
 
